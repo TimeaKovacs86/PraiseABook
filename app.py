@@ -17,14 +17,18 @@ collection = db[COLLECTION_NAME]
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
+def collect_data():
     book_array = []
 
     for books in collection.find():
         book_array.append(books)
 
-    return render_template('base.html', books=book_array)
+    return book_array
+
+
+@app.route('/')
+def index():
+    return render_template('base.html', books=collect_data())
 
 
 @app.route('/recommendation')
@@ -49,7 +53,7 @@ def create():
         "recommendation": recommendation}
 
     collection.insert_one(mydict)
-    return render_template("base.html")
+    return render_template("base.html", books=collect_data())
 
 
 if __name__ == '__main__':
