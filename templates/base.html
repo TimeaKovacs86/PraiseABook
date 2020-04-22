@@ -15,7 +15,9 @@
 
 {% for item in books %}
     <p>{{ item.title }}</p>
+    <button><a href="{{ url_for('fill_out_update', item_id=item._id) }}">Update a book</a></button>
 {% endfor %}
+
 
 </body>
 

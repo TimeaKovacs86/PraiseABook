@@ -1,6 +1,7 @@
 import os
 
 import pymongo as pymongo
+from bson import ObjectId
 from flask import Flask, render_template, request
 
 USERNAME = os.getenv("USERNAME")
@@ -24,6 +25,10 @@ def collect_data():
         book_array.append(books)
 
     return book_array
+
+
+def collect_data_update(item_id):
+    return collection.find({"_id": ObjectId(item_id)})
 
 
 @app.route('/')
@@ -53,6 +58,38 @@ def create():
         "recommendation": recommendation}
 
     collection.insert_one(mydict)
+    return render_template("base.html", books=collect_data())
+
+
+@app.route('/update/<item_id>')
+def fill_out_update(item_id):
+    book = collect_data_update(item_id)
+    return render_template('update.html', book=book)
+
+
+@app.route('/update/<id>', methods=["POST"])
+def update(id):
+    author = request.form["author"]
+    book_title = request.form["book_title"]
+    genre = request.form["genre"]
+    recommendation = request.form["recommendation"]
+    book_cover_pic = request.form["book_cover_pic"]
+
+    mydict = {
+        "author": author,
+        "title": book_title,
+        "genre": genre,
+        "cover_picture_link": book_cover_pic,
+        "recommendation": recommendation
+    }
+
+    collection.update_one(
+        {"_id": ObjectId(id)},
+        {
+            "$set": mydict
+        }
+    )
+
     return render_template("base.html", books=collect_data())
 
 
