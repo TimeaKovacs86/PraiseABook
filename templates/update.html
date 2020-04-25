@@ -1,14 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
+{% extends 'base.html' %}
+{% block page_title %}Update page{% endblock %}
+{% block content %}
 {% for i in book %}
 
     <form action="{{ url_for ('update',id=i._id) }}" method="POST">
@@ -35,6 +27,5 @@
         <button><a href="{{ url_for('index') }}">Cancel</a></button>
     </form>
 {% endfor %}
+{% endblock %}
 
-</body>
-</html>

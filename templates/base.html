@@ -7,9 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css') }}">
-    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/default.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/component.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for ('static', filename='images/icons8-books-100.ico') }}">
+    <script src="{{ url_for ('static', filename='js/modernizr.custom.js') }}"></script>
+    <title>{% block page_title %}Home page{% endblock %}</title>
+
 </head>
 <body>
+{% block content %}
 <button><a href="{{ url_for('recommendation') }}">Recommend a book</a></button>
 
 
@@ -30,7 +37,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                   Clicking on the delete button you will permanently erase from the database the book called: {{ item.title }}
+                    Clicking on the delete button you will permanently erase from the database the book
+                    called: {{ item.title }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -43,10 +51,103 @@
     </div>
 {% endfor %}
 
+
+<div class="container">
+    <!-- Codrops top bar -->
+    <div class="main">
+        <ul id="og-grid" class="og-grid">
+            {% for item in books %}
+                <li>
+                    <a
+                            data-title="{{ item.title }}"
+                            data-largesrc="{{ item.cover_picture_link }}"
+                            data-description="{{ item.recommendation }}"
+                            href="{{ url_for('fill_out_update', item_id=item._id) }}"
+                            data-target="#{{ item._id }}"
+                    >
+                        <img src="{{ item.cover_picture_link }}" alt="Images" height="250px">
+
+                    </a>
+                    {#                    Modal#}
+                    <div class="modal fade" id="{{ item._id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure about deleting this
+                                        book?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Clicking on the delete button you will permanently erase from the database the book
+                                    called: {{ item.title }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <a href="{{ url_for('delete', item_id=item._id) }}">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="container-fluid home">
+    <div class="row">
+        <div class="col-6 col-md-6 col-lg-8">
+            <h5 class="bold">Created by</h5>
+            <h5>Tímea Kovács</h5>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4">
+            <h5 class="bold">Social</h5>
+            <ul class="list-inline social-links">
+                <li class="list-inline-item">
+                    <a target="_blank" href="https://www.facebook.com/timea.kovacs.3994">
+                        <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a target="_blank" href="https://github.com/TimeaKovacs86">
+                        <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a target="_blank" href="https://www.linkedin.com/in/timeakovacs86/">
+                        <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                        <span class="sr-only">LinkedIn</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+{%endblock%}
+
 {#Javascript for the pop ups#}
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{{ url_for ('static', filename='js/grid.js') }}"></script>
+<script>
+    $(function () {
+        Grid.init();
+    });
+</script>
 </body>
 
 </html>
