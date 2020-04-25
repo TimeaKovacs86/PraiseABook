@@ -2,7 +2,7 @@ import os
 
 import pymongo as pymongo
 from bson import ObjectId
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 
 USERNAME = os.getenv("USERNAME")
 PASSWORD = os.getenv("PASSWORD")
@@ -10,12 +10,17 @@ CLUSTER = os.getenv("CLUSTER")
 DB_NAME = os.getenv("DB_NAME")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 
+
 client = pymongo.MongoClient(
     "mongodb+srv://" + USERNAME + ":" + PASSWORD + "@" + CLUSTER + ".mongodb.net/test?retryWrites=true&w=majority")
 db = client[DB_NAME]
 collection = db[COLLECTION_NAME]
 
 app = Flask(__name__)
+
+# Set the cache to 0 -> There is no cache at all
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.secret_key = os.environ.get('SECRET_KEY')
 
 
 def collect_data():
@@ -58,7 +63,9 @@ def create():
         "recommendation": recommendation}
 
     collection.insert_one(mydict)
-    return render_template("base.html", books=collect_data())
+
+    flash("You have been created a new book recommendation!")
+    return redirect(url_for("index"))
 
 
 @app.route('/update/<item_id>')
@@ -90,7 +97,9 @@ def update(id):
         }
     )
 
-    return render_template("base.html", books=collect_data())
+    flash("You have been updated a new book recommendation!")
+
+    return redirect(url_for("index"))
 
 
 @app.route('/delete/<item_id>')
@@ -98,7 +107,7 @@ def delete(item_id):
     collection.delete_one(
         {"_id": ObjectId(item_id)},
     )
-    return render_template("base.html", books=collect_data())
+    return redirect(url_for("index"))
 
 
 if __name__ == '__main__':
