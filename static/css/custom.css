@@ -2,6 +2,12 @@ body {
     background-color: dimgrey;
 }
 
+header {
+    height: 50px;
+    background-color: #0c5460;
+    text-align: center;
+}
+
 .over {
     position: absolute;
     width: 800px;
@@ -9,3 +15,4 @@ body {
     left: 5px;
     z-index: 1;
 }
+

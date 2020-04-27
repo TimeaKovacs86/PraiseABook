@@ -10,7 +10,6 @@ CLUSTER = os.getenv("CLUSTER")
 DB_NAME = os.getenv("DB_NAME")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 
-
 client = pymongo.MongoClient(
     "mongodb+srv://" + USERNAME + ":" + PASSWORD + "@" + CLUSTER + ".mongodb.net/test?retryWrites=true&w=majority")
 db = client[DB_NAME]
@@ -39,6 +38,21 @@ def collect_data_update(item_id):
 @app.route('/')
 def index():
     return render_template('base.html', books=collect_data())
+
+
+@app.route('/fantasy')
+def fantasy():
+    return render_template('fantasy.html', books=collect_data())
+
+
+@app.route('/horror')
+def horror():
+    return render_template('horror.html', books=collect_data())
+
+
+@app.route('/thriller')
+def thriller():
+    return render_template('thriller.html', books=collect_data())
 
 
 @app.route('/recommendation')
@@ -107,6 +121,9 @@ def delete(item_id):
     collection.delete_one(
         {"_id": ObjectId(item_id)},
     )
+
+    flash("You have been deleted the chosen book!")
+
     return redirect(url_for("index"))
 
 

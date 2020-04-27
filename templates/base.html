@@ -17,6 +17,36 @@
 </head>
 <body>
 
+<header>
+    <h1>Praise A Book</h1>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar10">
+            <ul class="navbar-nav nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">All</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('fantasy') }}">Fantasy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('horror') }}">Horror</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('thriller') }}">Thriller</a>
+                </li>
+                <li class="nav-item">
+                  <button><a href="{{ url_for('recommendation') }}">Recommend a book</a></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 {% block content %}
 
     <!-- Toast message -->
@@ -34,7 +64,7 @@
         {% endif %}
     {% endwith %}
 
-    <button><a href="{{ url_for('recommendation') }}">Recommend a book</a></button>
+
 
 
     <div class="container">
@@ -133,9 +163,6 @@
 {#Javascript for the pop ups#}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-
 
 
 <script src="{{ url_for ('static', filename='js/grid.js') }}"></script>
