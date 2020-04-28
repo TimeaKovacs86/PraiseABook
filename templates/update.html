@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 {% block page_title %}Update page{% endblock %}
+{% block navbar_list_element %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('index') }}">All</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('fantasy') }}">Fantasy</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('horror') }}">Horror</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('thriller') }}">Thriller</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('recommendation') }}">Recommend a book</a>
+    </li>{% endblock %}
 {% block content %}
 {% for i in book %}
 

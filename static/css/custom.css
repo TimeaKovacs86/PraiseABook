@@ -1,12 +1,28 @@
 body {
-    background-color: dimgrey;
+    background-color: #f1b67a;
 }
 
 header {
-    height: 50px;
-    background-color: #0c5460;
-    text-align: center;
+    height: 150px;
+    background-image: url("https://images.wallpaperscraft.com/image/books_shelf_library_123516_2560x1080.jpg");
+    /*background-color: #e07a5f;*/
 }
+
+.page-title {
+    text-align: center;
+    padding-top: 50px;
+    color: #f1b67a;
+    text-shadow: 2px 2px #1e7e34 ;
+}
+
+.navbar-background {
+    background-color: #9b4c32 !important;
+}
+
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
+    color: #1b1e21 !important;
+}
+
 
 .over {
     position: absolute;
@@ -16,3 +32,45 @@ header {
     z-index: 1;
 }
 
+.margin-bottom {
+    margin-bottom: 200px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, #f1b67a, #e07a5f);
+    opacity: 0.8;
+}
+
+.social-links {
+    margin-bottom: 10px;
+}
+
+.fab {
+    border: 3px solid;
+    border-radius: 25%;
+    padding: 3px;
+    transition: all 0.5s ease-in-out;
+}
+
+.fab:hover {
+    background-color: #e07a5f;
+    transition: all 0.5s ease-in-out;
+}
+
+.fa-facebook {
+    color: #4267b1;
+    background-color: white;
+}
+
+.fa-github {
+    color: black;
+    background-color: white;
+}
+
+.fa-linkedin {
+    color: #0073af;
+    background-color: white;
+}
