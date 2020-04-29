@@ -9,10 +9,16 @@ header {
 }
 
 .page-title {
+    font-size: 70px;
+    font-weight:bold;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 40px;
     color: #f1b67a;
     text-shadow: 2px 2px #1e7e34 ;
+}
+
+.navbar {
+    font-size: 30px;
 }
 
 .navbar-background {
@@ -73,4 +79,22 @@ footer {
 .fa-linkedin {
     color: #0073af;
     background-color: white;
+}
+
+/*Form Styling*/
+
+form {
+ text-align: center;
+ padding: 20px 0 100px 0;
+ width: 50%;
+ margin: 0 auto;
+}
+
+label {
+    font-size: 30px;
+}
+
+#genre {
+    width: 25%;
+    margin: 0 auto;
 }

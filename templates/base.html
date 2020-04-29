@@ -104,10 +104,10 @@
                                         called: {{ item.title }}
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Close
                                         </button>
                                         <a href="{{ url_for('delete', item_id=item._id) }}">
-                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
                                         </a>
                                     </div>
                                 </div>

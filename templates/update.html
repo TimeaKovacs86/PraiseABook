@@ -21,26 +21,26 @@
 
     <form action="{{ url_for ('update',id=i._id) }}" method="POST">
         <label for="author">Author's name</label><br>
-        <input type="text" id="author" name="author" placeholder="Author's name" value="{{ i.author }}" required><br>
+        <input type="text" id="author" class="form-control" name="author" placeholder="Author's name" value="{{ i.author }}" required><br>
         <label for="book_title">Book title</label><br>
-        <input type="text" id="book_title" name="book_title" placeholder="Book title" value="{{ i.title }}"
+        <input type="text" id="book_title" class="form-control" name="book_title" placeholder="Book title" value="{{ i.title }}"
                required><br>
         <label for="genre">Pick a Genre:</label><br>
-        <select id="genre" name="genre">
+        <select id="genre" class="form-control" name="genre">
             <option value="{{ i.genre }}" selected="selected">{{ i.genre }}</option>
             <option value="Fantasy">Fantasy</option>
             <option value="Horror">Horror</option>
             <option value="Thriller">Thriller</option>
-        </select>
+        </select><br>
         <label for="recommendation">Recommendation</label><br>
-        <textarea id="recommendation" name="recommendation" placeholder="Write your recommendation here..."
+        <textarea id="recommendation" class="form-control" name="recommendation" placeholder="Write your recommendation here..." rows="5"
                   required>{{ i.recommendation }}
-</textarea>
+</textarea><br>
         <label for="book_cover_pic">Book cover picture</label><br>
-        <input type="text" id="book_cover_pic" name="book_cover_pic" placeholder="Cover picture link"
-               value="{{ i.cover_picture_link }}" required><br>
-        <input type="submit" value="Submit">
-        <button><a href="{{ url_for('index') }}">Cancel</a></button>
+        <input type="text" id="book_cover_pic" class="form-control" name="book_cover_pic" placeholder="Cover picture link"
+               value="{{ i.cover_picture_link }}" required><br><br>
+        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Submit</button>
+        <button class="btn btn-light"><a href="{{ url_for('index') }}"><i class="fas fa-arrow-left"></i> Cancel</a></button>
     </form>
 {% endfor %}
 {% endblock %}
