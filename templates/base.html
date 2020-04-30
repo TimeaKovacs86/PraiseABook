@@ -118,8 +118,10 @@
             </ul>
         </div>
     </div>
-
 {% endblock %}
+
+<!--Up to top button-->
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-up fa-2x"></i></button>
 
 {% block footer %}
     <footer class="container-fluid home">
@@ -178,6 +180,7 @@
         $('.toast').toast('show');
     });
 </script>
+<script src="{{ url_for ('static', filename='js/scroll_to_top.js') }}"></script>
 </body>
 
 </html>

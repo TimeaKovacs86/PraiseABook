@@ -1,5 +1,6 @@
-body {
+html, body {
     background-color: #f1b67a;
+    scroll-behavior: smooth;
 }
 
 header {
@@ -10,11 +11,14 @@ header {
 
 .page-title {
     font-size: 70px;
-    font-weight:bold;
+    font-weight: bold;
     text-align: center;
     padding-top: 40px;
+    letter-spacing: 2px;
     color: #f1b67a;
-    text-shadow: 2px 2px #1e7e34 ;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 5px 5px #9b4c32;
+
 }
 
 .navbar {
@@ -40,6 +44,26 @@ header {
 
 .margin-bottom {
     margin-bottom: 200px;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    border: #1b1e21 2px solid;
+    outline: none;
+    background-color: #e07a5f;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 35px;
+    /*opacity: 0.8;*/
+
+}
+
+#myBtn:hover {
+    background-color: #f1b67a;
 }
 
 footer {
@@ -84,10 +108,10 @@ footer {
 /*Form Styling*/
 
 form {
- text-align: center;
- padding: 20px 0 100px 0;
- width: 50%;
- margin: 0 auto;
+    text-align: center;
+    padding: 20px 0 100px 0;
+    width: 50%;
+    margin: 0 auto;
 }
 
 label {
@@ -97,4 +121,20 @@ label {
 #genre {
     width: 25%;
     margin: 0 auto;
+}
+
+@media (max-width: 450px) {
+    .page-title {
+        font-size: 55px;
+        text-shadow: 5px 5px black;
+    }
+}
+
+@media (max-width: 361px) {
+    .page-title {
+        font-size: 45px;
+    }
+    .social-links .list-inline-item {
+        margin: 0;
+    }
 }
