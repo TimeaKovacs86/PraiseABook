@@ -342,11 +342,12 @@ var Grid = (function () {
     Preview.prototype = {
         create: function () {
             // create Preview structure:
-            this.$title = $('<h3></h3>');
+            this.$author = $('<h5></h5>');
+            this.$title = $('<h2></h2>');
             this.$description = $('<p></p>');
             this.$href = $('<a>Update</a>');
             this.$toggle = $('<button id="delete-button" type="button" data-toggle="modal" >Delete</button>');
-            this.$details = $('<div class="og-details"></div>').append(this.$title, this.$description, this.$href, this.$toggle);
+            this.$details = $('<div class="og-details"></div>').append(this.$author, this.$title, this.$description, this.$href, this.$toggle);
             this.$loading = $('<div class="og-loading"></div>');
             this.$fullimage = $('<div class="og-fullimg"></div>').append(this.$loading);
             this.$closePreview = $('<span class="og-close"></span>');
@@ -384,9 +385,11 @@ var Grid = (function () {
                     toggle: $itemEl.attr('data-target'),
                     largesrc: $itemEl.data('largesrc'),
                     title: $itemEl.data('title'),
+                    author: $itemEl.data('author'),
                     description: $itemEl.data('description')
                 };
 
+            this.$author.html(eldata.author);
             this.$title.html(eldata.title);
             this.$description.html(eldata.description);
             this.$href.attr('href', eldata.href);

@@ -76,6 +76,7 @@
                 {% for item in books %}
                     <li>
                         <a
+                                data-author="{{ item.author }}"
                                 data-title="{{ item.title }}"
                                 data-largesrc="{{ item.cover_picture_link }}"
                                 data-description="{{ item.recommendation }}"
