@@ -17,32 +17,37 @@
         <a class="nav-link" href="{{ url_for('recommendation') }}">Recommend a book</a>
     </li>{% endblock %}
 {% block content %}
-{% for i in book %}
+    {% for i in book %}
 
-    <form action="{{ url_for ('update',id=i._id) }}" method="POST">
-        <label for="author">Author's name</label><br>
-        <input type="text" id="author" class="form-control" name="author" placeholder="Author's name" value="{{ i.author }}" required><br>
-        <label for="book_title">Book title</label><br>
-        <input type="text" id="book_title" class="form-control" name="book_title" placeholder="Book title" value="{{ i.title }}"
-               required><br>
-        <label for="genre">Pick a Genre</label><br>
-        <select id="genre" class="form-control" name="genre">
-            <option value="{{ i.genre }}" selected="selected">{{ i.genre }}</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Horror">Horror</option>
-            <option value="Thriller">Thriller</option>
-        </select><br>
-        <label for="recommendation">Recommendation</label><br>
-        <textarea id="recommendation" class="form-control" name="recommendation" placeholder="Write your recommendation here... (Max character number is 450.)" rows="5" maxlength="450"
-                  required>{{ i.recommendation }}
+        <form action="{{ url_for ('update',id=i._id) }}" method="POST">
+            <label for="author">Author's name</label><br>
+            <input type="text" id="author" class="form-control" name="author" placeholder="Author's name"
+                   value="{{ i.author }}" required><br>
+            <label for="book_title">Book title</label><br>
+            <input type="text" id="book_title" class="form-control" name="book_title" placeholder="Book title"
+                   value="{{ i.title }}"
+                   required><br>
+            <label for="genre">Pick a Genre</label><br>
+            <select id="genre" class="form-control" name="genre">
+                <option value="{{ i.genre }}" selected="selected">{{ i.genre }}</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Thriller">Thriller</option>
+            </select><br>
+            <label for="recommendation">Recommendation</label><br>
+            <textarea id="recommendation" class="form-control" name="recommendation"
+                      placeholder="Write your recommendation here... (Max character number is 450.)" rows="5"
+                      maxlength="450"
+                      required>{{ i.recommendation }}
 </textarea><br>
-        <label for="book_cover_pic">Book cover picture</label><br>
-        <input type="text" id="book_cover_pic" class="form-control" name="book_cover_pic" placeholder="Cover picture link"
-               value="{{ i.cover_picture_link }}" required><br><br>
-        <button class="btn btn-light"><a href="{{ url_for('index') }}"><i class="fas fa-arrow-left"></i> Cancel</a></button>
-        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Update</button>
+            <label for="book_cover_pic">Book cover picture</label><br>
+            <input type="text" id="book_cover_pic" class="form-control" name="book_cover_pic"
+                   placeholder="Cover picture link"
+                   value="{{ i.cover_picture_link }}" required><br><br>
+            <a href="{{ url_for('index') }}" class="btn btn-light"><i class="fas fa-arrow-left"></i> Cancel</a>
+            <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Update</button>
 
-    </form>
-{% endfor %}
+        </form>
+    {% endfor %}
 {% endblock %}
 

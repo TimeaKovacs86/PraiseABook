@@ -34,8 +34,9 @@
 </textarea><br>
     <label for="book_cover_pic">Book cover picture</label><br>
     <input type="text" id="book_cover_pic" class="form-control" name="book_cover_pic" placeholder="Cover picture link" required><br><br>
-    <button class="btn btn-light"><a href="{{ url_for('index') }}"><i class="fas fa-arrow-left"></i></a> Cancel</button>
+    <a href="{{ url_for('index') }}" class="btn btn-light"><i class="fas fa-arrow-left"></i> Cancel</a>
     <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Submit</button>
+
 
 </form>
 </div>
