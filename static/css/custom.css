@@ -123,17 +123,33 @@ label {
     margin: 0 auto;
 }
 
+@media (max-width: 769px) {
+    form {
+        width: 80%;
+        padding: 5px 0 100px 0;
+    }
+    #genre {
+    width: 30%;}
+    .og-details a, .og-details #delete-button {
+        font-size: 12px;
+    }
+}
+
+
 @media (max-width: 450px) {
     .page-title {
         font-size: 55px;
         text-shadow: 5px 5px black;
     }
+     #genre {
+    width: 60%;}
 }
 
 @media (max-width: 361px) {
     .page-title {
         font-size: 45px;
     }
+
     .social-links .list-inline-item {
         margin: 0;
     }
