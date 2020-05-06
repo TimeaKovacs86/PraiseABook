@@ -28,7 +28,9 @@ def collect_data():
     for books in collection.find():
         book_array.append(books)
 
-    return book_array
+    ordered_book_array = book_array[::-1]
+
+    return ordered_book_array
 
 
 def collect_data_update(item_id):
@@ -69,6 +71,10 @@ def create():
     recommendation = request.form["recommendation"]
     book_cover_pic = request.form["book_cover_pic"]
 
+    if len(str(recommendation)) > 400:
+        flash("You wrote too long recommendation")
+        return redirect(url_for("recommendation"))
+
     mydict = {
         "author": author,
         "title": book_title,
@@ -84,8 +90,8 @@ def create():
 
 @app.route('/update/<item_id>')
 def fill_out_update(item_id):
-    book = collect_data_update(item_id)
-    return render_template('update.html', book=book)
+    id = collect_data_update(item_id)
+    return render_template('update.html', book=id)
 
 
 @app.route('/update/<id>', methods=["POST"])
@@ -95,6 +101,10 @@ def update(id):
     genre = request.form["genre"]
     recommendation = request.form["recommendation"]
     book_cover_pic = request.form["book_cover_pic"]
+
+    if len(str(recommendation)) > 400:
+        flash("You wrote too long recommendation")
+        return render_template('update.html', book=collect_data_update(id))
 
     mydict = {
         "author": author,

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="shortcut icon" type="image/png" href="{{ url_for ('static', filename='images/icons8-books-100.ico') }}">
     <script src="{{ url_for ('static', filename='js/modernizr.custom.js') }}"></script>
+
     <title>{% block page_title %}Home page{% endblock %}</title>
 
 </head>
@@ -29,28 +30,28 @@
         <div class="navbar-collapse collapse" id="navbar10">
             <ul class="navbar-nav nav-fill w-100">
                 {% block navbar_list_element %}
-                <li  class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('index') }}">All</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('fantasy') }}">Fantasy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('horror') }}">Horror</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('thriller') }}">Thriller</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('recommendation') }}">Recommend a book</a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('index') }}">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('fantasy') }}">Fantasy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('horror') }}">Horror</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('thriller') }}">Thriller</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('recommendation') }}">Recommend a book</a>
+                    </li>
                 {% endblock navbar_list_element %}
             </ul>
         </div>
     </div>
 </nav>
-{% block content %}
 
+{% block message %}
     <!-- Toast message -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -65,9 +66,9 @@
             </div>
         {% endif %}
     {% endwith %}
+{% endblock %}
 
-
-
+{% block content %}
 
     <div class="container margin-bottom">
         <!-- Codrops top bar -->
@@ -83,7 +84,7 @@
                                 href="{{ url_for('fill_out_update', item_id=item._id) }}"
                                 data-target="#{{ item._id }}"
                         >
-                            <img src="{{ item.cover_picture_link }}" alt="Images" height="250px">
+                            <img src="{{ item.cover_picture_link }}" alt="Images" height="250px" width="150px">
 
                         </a>
                         {#                    Modal#}
@@ -105,10 +106,13 @@
                                         called: {{ item.title }}
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Close
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                                class="fas fa-times"></i> Close
                                         </button>
                                         <a href="{{ url_for('delete', item_id=item._id) }}">
-                                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="fas fa-trash-alt"></i> Delete
+                                            </button>
                                         </a>
                                     </div>
                                 </div>
@@ -118,6 +122,7 @@
                 {% endfor %}
             </ul>
         </div>
+
     </div>
 {% endblock %}
 
@@ -168,7 +173,6 @@
 {#Javascript for the pop ups#}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 
 <script src="{{ url_for ('static', filename='js/grid.js') }}"></script>
 <script>
