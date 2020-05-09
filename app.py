@@ -75,7 +75,7 @@ def create():
     recommendation = request.form["recommendation"]
     book_cover_pic = request.form["book_cover_pic"]
 
-    if len(str(recommendation)) > 400:
+    if len(str(recommendation)) > 301:
         flash("You wrote too long recommendation")
         return redirect(url_for("recommendation"))
 
@@ -108,7 +108,7 @@ def update(id):
     recommendation = request.form["recommendation"]
     book_cover_pic = request.form["book_cover_pic"]
 
-    if len(str(recommendation)) > 400:
+    if len(str(recommendation)) > 301:
         flash("You wrote too long recommendation")
         return render_template('update.html', book=collect_data_update(id))
 
