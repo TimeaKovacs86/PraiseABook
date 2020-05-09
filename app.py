@@ -4,12 +4,14 @@ import pymongo as pymongo
 from bson import ObjectId
 from flask import Flask, render_template, request, flash, redirect, url_for
 
+# Set environmental variables
 USERNAME = os.getenv("USERNAME")
 PASSWORD = os.getenv("PASSWORD")
 CLUSTER = os.getenv("CLUSTER")
 DB_NAME = os.getenv("DB_NAME")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 
+# Create database connection and naming the database and collection
 client = pymongo.MongoClient(
     "mongodb+srv://" + USERNAME + ":" + PASSWORD + "@" + CLUSTER + ".mongodb.net/test?retryWrites=true&w=majority")
 db = client[DB_NAME]
@@ -23,6 +25,7 @@ app.secret_key = os.environ.get('SECRET_KEY')
 
 
 def collect_data():
+    """Fetch all the data from the database"""
     book_array = []
 
     for books in collection.find():
@@ -34,6 +37,7 @@ def collect_data():
 
 
 def collect_data_update(item_id):
+    """Fetched the picked books data from the database"""
     return collection.find({"_id": ObjectId(item_id)})
 
 
@@ -64,7 +68,7 @@ def recommendation():
 
 @app.route('/create', methods=["POST"])
 def create():
-    """create a new object in the database"""
+    """Create a new object in the database"""
     author = request.form["author"]
     book_title = request.form["book_title"]
     genre = request.form["genre"]
@@ -90,12 +94,14 @@ def create():
 
 @app.route('/update/<item_id>')
 def fill_out_update(item_id):
+    """Gives you back the update form with the details of the picked book"""
     id = collect_data_update(item_id)
     return render_template('update.html', book=id)
 
 
 @app.route('/update/<id>', methods=["POST"])
 def update(id):
+    """Update the details of the picked book"""
     author = request.form["author"]
     book_title = request.form["book_title"]
     genre = request.form["genre"]
@@ -128,6 +134,7 @@ def update(id):
 
 @app.route('/delete/<item_id>')
 def delete(item_id):
+    """Delete chosen book from the page"""
     collection.delete_one(
         {"_id": ObjectId(item_id)},
     )

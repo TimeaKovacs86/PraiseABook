@@ -32,6 +32,7 @@ html {
 
 body {
     font-family: 'Lato', Calibri, Arial, sans-serif;
+    /*compare to the open source code what I used for this project I changed the background in the next line*/
     background: #f1b67a;
     font-weight: 300;
     font-size: 15px;

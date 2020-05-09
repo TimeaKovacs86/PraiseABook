@@ -5,13 +5,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/bootstrap.min.css') }}">
+    <!--CSS for expand function-->
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/default.css') }}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/component.css') }}">
+    <!--Custom CSS-->
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css') }}">
+    <!--Fontawesome icon-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <link rel="shortcut icon" type="image/png" href="{{ url_for ('static', filename='images/icons8-books-100.ico') }}">
+    <!-- Preload the necessary JS code for the expand function-->
     <script src="{{ url_for ('static', filename='js/modernizr.custom.js') }}"></script>
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="{{ url_for ('static', filename='images/icons8-books-100.ico') }}">
 
     <title>{% block page_title %}Home page{% endblock %}</title>
 
@@ -22,6 +28,7 @@
     <h1 class="page-title">Praise A Book</h1>
 </header>
 
+<!--Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-background">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
@@ -129,6 +136,7 @@
 <!--Up to top button-->
 <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-up fa-2x"></i></button>
 
+<!--Footer-->
 {% block footer %}
     <footer class="container-fluid home">
         <div class="row">
@@ -170,16 +178,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-{#Javascript for the pop ups#}
+{#Javascript for the pop ups#} <!-- Load additional JS folders for different functions-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script src="{{ url_for ('static', filename='js/grid.js') }}"></script>
+<!-- Initialize Grid function-->
 <script>
     $(function () {
         Grid.init();
     });
 </script>
+<!--Show toast message when clicked on update or delete button-->
 <script>
     $(document).ready(function () {
         $('.toast').toast('show');

@@ -342,10 +342,12 @@ var Grid = (function () {
     Preview.prototype = {
         create: function () {
             // create Preview structure:
+            //Added the author compared to the open source code what I was using, and changed the title sizing to h2, as well as I added to the details the author
             this.$author = $('<h5></h5>');
             this.$title = $('<h2></h2>');
             this.$description = $('<p></p>');
             this.$href = $('<a>Update</a>');
+            //Added this extra "delete button" as a toggle compare to the open source code
             this.$toggle = $('<button id="delete-button" type="button" data-toggle="modal" >Delete</button>');
             this.$details = $('<div class="og-details"></div>').append(this.$author, this.$title, this.$description, this.$href, this.$toggle);
             this.$loading = $('<div class="og-loading"></div>');

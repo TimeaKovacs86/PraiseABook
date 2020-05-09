@@ -6,7 +6,7 @@ html, body {
 header {
     height: 150px;
     background-image: url("https://images.wallpaperscraft.com/image/books_shelf_library_123516_2560x1080.jpg");
-    /*background-color: #e07a5f;*/
+
 }
 
 .page-title {
@@ -21,6 +21,8 @@ header {
 
 }
 
+/*Styling navigation*/
+
 .navbar {
     font-size: 30px;
 }
@@ -33,6 +35,7 @@ header {
     color: #1b1e21 !important;
 }
 
+/*Styling the toast*/
 
 .over {
     position: absolute;
@@ -46,6 +49,8 @@ header {
     margin-bottom: 200px;
 }
 
+/*Styling the scroll to top button*/
+
 #myBtn {
     display: none;
     position: fixed;
@@ -58,7 +63,7 @@ header {
     cursor: pointer;
     border-radius: 10px;
     width: 35px;
-    /*opacity: 0.8;*/
+
 
 }
 
@@ -66,6 +71,7 @@ header {
     background-color: #f1b67a;
 }
 
+/*Styling the footer*/
 
 footer {
     position: fixed;
@@ -123,6 +129,9 @@ label {
     width: 25%;
     margin: 0 auto;
 }
+
+
+/*Styling the different resolutions*/
 
 @media (max-width: 769px) {
     form {
