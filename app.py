@@ -75,9 +75,19 @@ def create():
     recommendation = request.form["recommendation"]
     book_cover_pic = request.form["book_cover_pic"]
 
+    if len(str(author)) == 0 or len(str(book_title)) == 0 or len(str(book_cover_pic)) == 0:
+        flash("One of the input field is empty, please fill out all the required fields!")
+        return redirect(url_for("recommendation"))
+
+    if genre != "Fantasy" or genre != "Horror" or genre != "Thriller":
+        flash("Wrong genre type!")
+        return redirect(url_for("recommendation"))
+
     if len(str(recommendation)) > 301:
         flash("You wrote too long recommendation")
         return redirect(url_for("recommendation"))
+
+
 
     mydict = {
         "author": author,
@@ -107,6 +117,14 @@ def update(id):
     genre = request.form["genre"]
     recommendation = request.form["recommendation"]
     book_cover_pic = request.form["book_cover_pic"]
+
+    if len(str(author)) == 0 or len(str(book_title)) == 0 or len(str(book_cover_pic)) == 0:
+        flash("One of the input field is empty, please fill out all the required fields!")
+        return redirect(url_for("recommendation"))
+
+    if genre != "Fantasy" or genre != "Horror" or genre != "Thriller":
+        flash("Wrong genre type!")
+        return redirect(url_for("recommendation"))
 
     if len(str(recommendation)) > 301:
         flash("You wrote too long recommendation")

@@ -96,7 +96,7 @@ The application is convenient to use on every resolution (Mobile/Tablet/PC)
 #### Responsiveness
 
 - As a user, I want to use the website on Pc, Tablet and Mobile Phone so that on different devices it will work with the same functionality.
-- As a user, I want to see a hamburger menu instead of the standard navigation bar
+- As a user, I want to see a hamburger menu instead of the standard navigation bar for mobile size resolutions
 
 
     
