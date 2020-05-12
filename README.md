@@ -99,8 +99,6 @@ The application is convenient to use on every resolution (Mobile/Tablet/PC)
 - As a user, I want to see a hamburger menu instead of the standard navigation bar for mobile size resolutions
 
 
-    
-
 ## Features
 ### Existing Features
 
@@ -117,6 +115,7 @@ The application is convenient to use on every resolution (Mobile/Tablet/PC)
 
 ### Features Left to Implement
 - Add a link that you could conceivably earn money from people looking to buy the book
+- Less books displayed on a smaller resolution device, pagination
 
 ## Technologies Used
 
@@ -147,6 +146,181 @@ The application is convenient to use on every resolution (Mobile/Tablet/PC)
     - Jinja is a web template engine for the Python programming language. Jinja2 is a modern and designer-friendly templating language for Python, modelled after Django's templates.
 
 ## Testing
+
+### UI/UX
+
+- Scenario: As a user, I want to see the favicon on every page
+    - I am navigating to the <site_name> page
+    - I can see the favicon on the tab of the <site_name> page
+
+|site_name|
+|:---------:|
+|All     |
+|Fantasy |
+|Horror   |
+|Thriller   |
+|Recommend a book   |
+|Update   |
+
+- Scenario: As a user, I want to see the buttons in reasonable colors (red, green or clear(white))
+
+    - The red color buttons are for the deleting function
+        - On the main page:
+            - I click on any of the book covers
+            - I can see that the delete button is red
+            - I click on the delete button 
+            - I get a pop up box which asking for the verification of my decision to delete the chosen book
+            - The verifying delete button is red as well
+            - The cancel button is white
+            
+    - The white or clear buttons are for the back navigation
+        - On the main page:
+            - I can click on any of the book cover
+            - I can see that the update button is white/clean
+            - I can click on the update button
+            - It will bring us to the filled out recommendation form connected with the chosen books data
+            - I can see at the end of the form a cancel button 
+            - The cancel button is white
+            - The update button is green
+            
+        - On the Recommend a book page:
+            - I can click on the navbar Recommend a page link
+            - It will bring us to the recommendation site form
+            - There is a cancel button at the end of the form which is white 
+            - The submit button is green
+               
+- Scenario: As a user, I want to see the hover effect on navigation elements, on the scroll to top button, on the social media icons as well as on the book cover pictures
+
+     - I am navigating to the landing page
+     - I can go over the <effected_elements> 
+     - I can see the hover effect over the icons
+
+|effected_elements|
+|:---------:|
+|All|
+|Fantasy |
+|Horror|
+|Thriller|
+|Recommend a book|
+|Update|
+|Scroll to top button|
+|Facebook|
+|GitHub |
+|LinkedIn  |
+
+- Scenario: As a user, I want to be able to click on the social links so that it can be open in a new tab
+    - I click on the <social_link> social link and the page will open in a new tab
+    
+|social_link|
+|:---------:|    
+|Facebook|
+|GitHub |
+|LinkedIn  |   
+    
+
+### Main functionalities:
+
+- Scenario: As a user, I want to see all the already stored and recommended books on the home page
+
+    - I open the main page
+    - I can see the previously added books
+
+- Scenario: As a user, I want to see the already recommended books ordered by Genre in different pages
+
+    - I open the main page
+    - I click on <genre> link on the navigation bar
+    - I can see on different pages the books with the correct genre
+    
+|genre|
+|:---------:|    
+|Fantasy|
+|Horror|
+|Thriller|     
+
+
+- Scenario: As a user, I want to be able to create a new book recommendation by filling out a form
+
+    - When I go to the Recommend a book page I can see a form
+    - I fill out this form and click on the submit button
+    - I get back to the landing page and I can see the my previously recommended book as a first item in the list
+    - I get a toast message about creating a new book
+
+- Scenario: As a user, I want to be able to update an already recommended book's details by clicking on the cover picture and choosing the update option
+
+    - on the main page I click on the chosen books cover
+    - I click on the update button
+    - I will see an already filled out form of the book with the previously added information in the fields
+    - I gan change any input in any fields
+    - When I click on the submit button it brings be back to the index page
+    - I get a toast message about the update
+
+- Scenario: As a user, I want to be able to delete an already recommended book by clicking on the cover picture and choosing the delete option
+
+    - I pick a book and click on the cover picture
+    - I click on the delete button
+    - I get a pop up box with a question if I really want to delete the book from the database
+    - I click on the Delete button
+    - I get back to the main page (the book is deleted)
+    - I get a toast message about that I deleted the book
+
+- Scenario: As a user, I want to get a pop up question to verify my choice of deletion
+
+    - I pick a book and click on the cover picture
+    - I click on the delete button
+    - I get a pop up box with a question if I really want to delete the book from the database
+    - I click on the Cancel button
+    - I get back to the main page
+
+- Scenario: As a user, I want to see a "toast" message every time I do any kind of modification on the database or on the already created recommendations
+
+    - I have been covered all the possibilities of the toast messages in previous test cases (recommendation, update, delete)
+
+- Scenario: As a user, I want to be able to scroll to top with a simple click on button, instead of actually scrolling to the top
+
+    - I am on the <site_name> page when I have more recommended books, I can see a scroll to top button
+    - I click on the scroll to top button and it brings me back to the top of the page 
+    
+|site_name|
+|:---------:|
+|All     |
+|Fantasy |
+|Horror   |
+|Thriller   |    
+
+- Scenario: As a user, I want to see tha latest recommendation on the top of the page as the first item
+
+    - On the Recommend a book site I fill out the form
+    - Click on the submit button
+    - I get back to the main site
+    - I can see my previously recommended book as a first item
+
+
+- Scenario: As a user, I want to see notification if I miss any kind of mandatory input on the recommendation or update form
+
+    - Client side validation:
+        - I don't fill out any of the fields in the forms (recommendation or update)
+        - I get back an error message
+        
+    - Server side validation: (if the required attributes are deleted in the HTML)
+        - I don't fill out any of the fields in the forms (recommendation or update)
+        - The page reload itself
+        - I get back an error toast message
+           
+
+    
+### Responsiveness
+
+- Scenario: As a user, I want to use the website on Pc, Tablet and Mobile Phone so that on different devices it will work with the same functionality.
+
+    - I open the application on different devices ( PC, Tablet, Mobile )
+    - I am able to use all the functionalities 
+
+- Scenario: As a user, I want to see a hamburger menu instead of the standard navigation bar for mobile or tablet size resolutions
+
+    - I open the application on different devices ( Tablet, Mobile )
+    - I can see the navigation bar different as a hamburger menu
+    - Clicked on it I can see my options I can choose from to navigate between the pages  
+
 
 ## Deployment
 
