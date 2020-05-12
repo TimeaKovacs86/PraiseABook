@@ -321,6 +321,8 @@ The application is convenient to use on every resolution (Mobile/Tablet/PC)
     - I can see the navigation bar different as a hamburger menu
     - Clicked on it I can see my options I can choose from to navigate between the pages  
 
+### Validation
+- Checked my code with PEP8 and CSS validator
 
 ## Deployment
 

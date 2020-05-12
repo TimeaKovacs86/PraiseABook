@@ -87,8 +87,6 @@ def create():
         flash("You wrote too long recommendation")
         return redirect(url_for("recommendation"))
 
-
-
     mydict = {
         "author": author,
         "title": book_title,
