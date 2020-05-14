@@ -160,7 +160,12 @@ label {
         font-size: 45px;
     }
 
+    h2 {
+        font-size: 25px;
+    }
+
     .social-links .list-inline-item {
         margin: 0;
     }
+
 }

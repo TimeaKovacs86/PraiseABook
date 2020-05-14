@@ -240,3 +240,11 @@
     }
 
 }
+
+@media (max-width: 361px) {
+
+    .og-details a, .og-details #delete-button {
+        padding: 5px;
+    }
+}
+

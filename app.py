@@ -79,7 +79,7 @@ def create():
         flash("One of the input field is empty, please fill out all the required fields!")
         return redirect(url_for("recommendation"))
 
-    if genre != "Fantasy" or genre != "Horror" or genre != "Thriller":
+    if genre != "Fantasy" and genre != "Horror" and genre != "Thriller":
         flash("Wrong genre type!")
         return redirect(url_for("recommendation"))
 
@@ -120,7 +120,7 @@ def update(id):
         flash("One of the input field is empty, please fill out all the required fields!")
         return redirect(url_for("recommendation"))
 
-    if genre != "Fantasy" or genre != "Horror" or genre != "Thriller":
+    if genre != "Fantasy" and genre != "Horror" and genre != "Thriller":
         flash("Wrong genre type!")
         return redirect(url_for("recommendation"))
 
@@ -161,4 +161,4 @@ def delete(item_id):
 
 
 if __name__ == '__main__':
-    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
+    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=False)
